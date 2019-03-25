@@ -7,10 +7,6 @@ id_rank_Dict= dict()
 id_neighbors_Dict= dict()
 id_degree_Dict=dict()
 
-# default values
-beta=0.85
-delta=0.001
-
 # the function recieves as input the path for the input file as String
 # The functin loads the graph from  a given file
 def load_graph(path):
@@ -55,21 +51,17 @@ def load_graph(path):
 
 
 # The functin calcualates the page rank for each node in the graph
-def calculate_page_rank(betaInput, deltaInput):
+def calculate_page_rank(beta=0.85, delta=0.001):
     global id_rank_Dict
-    global beta
-    global delta
-    beta=betaInput
-    delta=deltaInput
     i=1
-    difference=calculate_PR_iteration()
+    difference=calculate_PR_iteration(beta)
     while(i<=20 and difference>delta):
-        difference = calculate_PR_iteration()
+        difference = calculate_PR_iteration(beta)
         i+=1
 
 
 # calculates one iteration of page rank, and return sum of difference between iteration
-def calculate_PR_iteration():
+def calculate_PR_iteration(beta):
     global id_rank_Dict
     tempRanks = dict()
     difference=0
@@ -124,6 +116,6 @@ def get_all_PageRank():
 
 
 # # MAIN
-# load_graph('C:\\Users\\nogahm\\Downloads\\Email-EuAll.csv')
-# calculate_page_rank(0.85, 0.001)
+# load_graph('C:\\Users\\nogahm\\Downloads\\Wikipedia_votes.csv')
+# calculate_page_rank(0.85)
 # print(Get_top_nodes(10))
