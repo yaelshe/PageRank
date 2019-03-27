@@ -121,6 +121,6 @@ def get_all_PageRank():
 
 
 # # MAIN
-load_graph('d:\\documents\\users\\nogahm\\Downloads\\Email-EuAll.csv')
+load_graph('d:\\documents\\users\\nogahm\\Downloads\\soc-sign-bitcoinalpha.csv')
 calculate_page_rank()
 print(Get_top_nodes(10))
