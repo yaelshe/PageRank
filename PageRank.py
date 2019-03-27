@@ -11,7 +11,7 @@ id_degree_Dict = dict()
 # the function recieves as input the path for the input file as String
 # The functin loads the graph from  a given file
 def load_graph(path):
-    df = pd.read_csv(path)
+    df = pd.read_csv(path,header=None)
     id = 0
     # go through all edges in csv
     for index, row in df.iterrows():
@@ -64,10 +64,10 @@ def calculate_PR_iteration(beta):
     global id_rank_Dict
     tempRanks = dict()
     difference = 0
+    S = 0
     # for each node calc rank by its neighbors
     for nodeId in id_neighbors_Dict:
         currRank = 0
-        S = 0
         # go through each neighbor
         for neighborId in id_neighbors_Dict[nodeId]:
             neighborRank = id_rank_Dict.get(neighborId)
@@ -121,6 +121,6 @@ def get_all_PageRank():
 
 
 # # MAIN
-load_graph('D:\\ISE-BGU\\שנה ד\\סמסטר ב\\ניתוח רשתות חברתיות\\עבודה 1\\Wikipedia_votes.csv')
-calculate_page_rank(0.85)
+load_graph('d:\\documents\\users\\nogahm\\Downloads\\Email-EuAll.csv')
+calculate_page_rank()
 print(Get_top_nodes(10))
